@@ -1,15 +1,15 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./Pages/Login";
-import Tabeltail from "./Pages/Tabeltail";
 import Register from "./Pages/Register";
+import Landingpage from "./Pages/Landingpage";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/Register" element={<Register />} />
-      <Route path="/tabel" element={<Tabeltail />} />
-      <Route path="/Login" element={<Login/>}/>
+      <Route path="/" element={<Landingpage/>}/>
+      <Route path="/L" element={<Login/>}/>
+      <Route path="/R" element={<Register/>}/>
     </Routes>
   );
 };
