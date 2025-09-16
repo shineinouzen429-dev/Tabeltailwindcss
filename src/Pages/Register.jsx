@@ -28,7 +28,7 @@ function Register () {
         <h1 className="text-2xl font-bold text-center mb-6">ログイン</h1>
         <form onSubmit={handleSubmit}>
             <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="Email">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="Nama">
                     Nama
                 </label>
                 <input 
@@ -43,7 +43,7 @@ function Register () {
                 />
             </div>
             <div className="mb-6">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="Password">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="Email">
                     Email
                     </label>
                     <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
