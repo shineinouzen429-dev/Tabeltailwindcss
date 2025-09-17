@@ -23,7 +23,7 @@ function Masuk () {
   };
 
   return (
-    <div className="flex justify-end items-center min-h-screen bg-linear-to-t from-sky-500 to-indigo-500">
+    <div className="flex justify-end items-center min-h-screen bg-linear-to-t f+rom-sky-500 to-indigo-500">
       <img src={Bsamping} alt="S" className="w-full max-w-3xl mx-auto rounded-lg shadow-lg "/>
       <div className="mr-28 bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
         <img src={gambar} alt="Binus" />
