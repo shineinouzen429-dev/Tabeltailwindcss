@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import App from "../App";
 import { useState } from "react";
+import axios from "axios";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -14,9 +15,22 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Di sini Anda bisa menambahkan logika otentikasi
-    console.log('Login data:', formData);
-    alert('Simulasi Login Berhasil!');
+  
+
+    try {
+      const res = await axios.get("http://localhost:5000/users", {
+        params: { email: formData.email, password: formData.password},
+      });
+
+       if (res.data.length > 0) {
+        alert ("Lodin sukses");
+        Navigate("/Tabeltail");
+      } else {
+        alert("Email atau password salah!")
+      }
+
+
+    }
   };
 
   return (
