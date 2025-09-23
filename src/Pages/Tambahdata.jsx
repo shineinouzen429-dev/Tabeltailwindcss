@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Tambahdata () {
@@ -10,7 +10,7 @@ function Tambahdata () {
       });
 
        const [loading, setLoading] = useState(true);
-       const Navigate = useNavigate();
+       const navigate = useNavigate();
     
       const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,7 +31,7 @@ function Tambahdata () {
       harga: ""
     });
 
-    Navigate("/Tabeldata"); // setelah daftar, arahkan ke login
+    navigate("/Tabeldata"); // setelah daftar, arahkan ke login
   } catch (error) {
     console.error("Error saat menambahkan data:", error);
     alert("Gagal menambahkan data.");
@@ -91,6 +91,7 @@ function Tambahdata () {
             </div>
             <div className="flex flex-col-2 items-center space-y-3 gap-37">
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+              
                 Pesan
               </button>
             <Link

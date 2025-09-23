@@ -12,5 +12,16 @@
       "email": "dafagacor2025@gmail.com",
       "password": "Infolinkgacor"
     }
+  ],
+  "menu": [
+    {
+      "id": "8665"
+    },
+    {
+      "id": "eb03",
+      "makanan": "mie",
+      "pesanan": "1",
+      "harga": "6k"
+    }
   ]
 }
