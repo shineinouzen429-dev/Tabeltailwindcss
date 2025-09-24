@@ -31,7 +31,7 @@ function Tambahdata () {
       harga: ""
     });
 
-    navigate("/Tabeldata"); // setelah daftar, arahkan ke login
+    navigate("/w"); // setelah daftar, arahkan ke login
   } catch (error) {
     console.error("Error saat menambahkan data:", error);
     alert("Gagal menambahkan data.");
