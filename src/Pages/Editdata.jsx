@@ -9,7 +9,7 @@ function EditData() {
 
     const [formData, setFormData] = useState({
         makanan: "",
-        paket: "",
+        pesanan: "",
         harga: "",
     });
     const [loading, setLoading] = useState(true);
@@ -17,7 +17,7 @@ function EditData() {
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const res = await axios.get(`https://localhost:5000/menu/${id}`);
+            const res = await axios.get(`http://localhost:5000/menu/${id}`);
             const data = Array.isArray(res.data) ? res.data[0]
             : res.data;
             setFormData(data)
@@ -39,9 +39,9 @@ function EditData() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:5000/menu/${id}, formData`);
+            await axios.put(`http://localhost:5000/menu/${id}`, formData);
                 alert("Data berhasil diubah Anjay");
-                navigate("/tabeldata")
+                navigate("/w")
         } catch (err) {
             console.error("Gagal mengupdate data:", err);
             alert("Gagal mengupdate data!");
@@ -55,68 +55,37 @@ function EditData() {
         <h1 className="text-3xl font-bold mb-6 text-center">
             Edit Data
         </h1>
-        <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg p-6"
-        >
-            <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-8" 
-                htmlFor="makanan"
-                >
-                    Makanan
-                </label>
+        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6">
+             <div className="mb-4">
+                <label htmlFor="makanan">Makanan: </label>
                 <input
-                id="Makanan"
-                name="Makanan"
-                type="text"
-                value={formData.Makanan || ""}
-                onChange={handleChange}
-                className="shadow appearance-none border rounded w-full"
-                required
+                  id="makanan"
+                  name="makanan"
+                  type="text"
+                  value={formData.makanan}
+                  onChange={handleChange}
                 />
-            </div>
-        </form>
-        <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg p-6"
-        >
-            <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-8" 
-                htmlFor="paket"
-                >
-                    Paket
-                </label>
+               </div>
+              <div className="mb-4">
+                <label htmlFor="pesanan">Pesanan: </label>
                 <input
-                id="paket"
-                name="paket"
-                type="text"
-                value={formData.paket || ""}
-                onChange={handleChange}
-                className="shadow appearance-none border rounded w-full"
-                required
+                  id="pesanan"
+                  name="pesanan"
+                  type="text"
+                  value={formData.pesanan}
+                  onChange={handleChange}
                 />
-            </div>
-        </form>
-        <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg p-6"
-        >
-            <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-8" 
-                htmlFor="harga"
-                >
-                    harga
-                </label>
+               </div>
+              <div className="mb-4">
+                <label htmlFor="harga">Harga: </label>
                 <input
-                id="harga"
-                name="harga"
-                type="text"
-                value={formData.harga || ""}
-                onChange={handleChange}
-                className="shadow appearance-none border rounded w-full"
-                required
+                  id="harga"
+                  name="harga"
+                  type="text"
+                  value={formData.harga}
+                  onChange={handleChange}
                 />
-            </div>
+             </div>
             <div className="flex items-center justify-between">
                 <button 
                 type="submit"
@@ -131,7 +100,7 @@ function EditData() {
                 className="bg-gray-500 hover:bg-gray-700 text-white
                 font-bold py-2 px-4 rounded"
                 >
-                    Kembali    
+                    Kembali 
                 </button>
             </div>
         </form>

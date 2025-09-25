@@ -15,28 +15,22 @@
   ],
   "menu": [
     {
-      "id": "3fe0",
-      "makanan": "Nasgor gorerng",
-      "pesanan": "8",
-      "harga": "90 yen"
+      "id": "d86f",
+      "makanan": "Nasgor bakar",
+      "pesanan": "1",
+      "harga": "Rp.100 yen"
     },
     {
-      "id": "0863",
-      "makanan": "Masukkan teks",
-      "pesanan": "Masukan teks",
-      "harga": "Masukkan 0"
-    },
-    {
-      "id": "385e",
-      "makanan": "Nasgor gorerng",
-      "pesanan": "Two 3",
-      "harga": "6k"
-    },
-    {
-      "id": "5040",
+      "id": "e2e6",
       "makanan": "Nasgor gorerng",
       "pesanan": "8",
       "harga": "Rp.100 yen"
+    },
+    {
+      "id": "5891",
+      "makanan": "Bakmi",
+      "pesanan": "2",
+      "harga": "^6Rb"
     }
   ]
 }

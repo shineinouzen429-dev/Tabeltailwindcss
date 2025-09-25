@@ -46,7 +46,7 @@ const Menu = () => {
           <tr>
             <th className="px-4 py-2 border">No</th>
             <th className="px-4 py-2 border">Makanan</th>
-            <th className="px-4 py-2 border">Paket</th>
+            <th className="px-4 py-2 border">Pesanan</th>
             <th className="px-4 py-2 border">Harga</th>
             <th className="px-4 py-2 border">Aksi</th>
           </tr>
@@ -57,7 +57,7 @@ const Menu = () => {
               <tr key={item.id} className="hover:bg-gray-50">
                 <td className="px-4 py-2 border">{index + 1}</td>
                 <td className="px-4 py-2 border">{item.makanan}</td>
-                <td className="px-4 py-2 border">{item.paket}</td>
+                <td className="px-4 py-2 border">{item.pesanan}</td>
                 <td className="px-4 py-2 border">{item.harga}</td>
                 <td className="px-4 py-2 border space-x-2">
                   <button
