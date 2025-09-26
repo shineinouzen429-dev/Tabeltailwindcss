@@ -15,22 +15,46 @@
   ],
   "menu": [
     {
-      "id": "d86f",
-      "makanan": "Nasgor bakar",
-      "pesanan": "1",
-      "harga": "Rp.100 yen"
-    },
-    {
-      "id": "e2e6",
-      "makanan": "Nasgor gorerng",
+      "id": "eb18",
+      "makanan": "Bakso",
       "pesanan": "8",
+      "harga": "rp.5000krerr"
+    },
+    {
+      "id": "7944",
+      "makanan": "Bakso",
+      "pesanan": "4",
+      "harga": "009k"
+    },
+    {
+      "id": "6908",
+      "makanan": "mie",
+      "pesanan": "Two 3",
+      "harga": "6k"
+    },
+    {
+      "id": "5491",
+      "makanan": "bakmi",
+      "pesanan": "4",
+      "harga": "10ps"
+    },
+    {
+      "id": "c6a5",
+      "makanan": "mie",
+      "pesanan": "retrt",
       "harga": "Rp.100 yen"
     },
     {
-      "id": "5891",
-      "makanan": "Bakmi",
-      "pesanan": "2",
-      "harga": "^6Rb"
+      "id": "e3a0",
+      "makanan": "Nasgor gorerng",
+      "pesanan": "Two 3",
+      "harga": "Rp.100 yen"
+    },
+    {
+      "id": "8bba",
+      "makanan": "mie",
+      "pesanan": "Two 3",
+      "harga": "rp.5000k"
     }
   ]
 }

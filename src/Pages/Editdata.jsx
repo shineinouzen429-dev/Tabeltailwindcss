@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 function EditData() {
     const { id } = useParams();
@@ -23,7 +24,11 @@ function EditData() {
             setFormData(data)
         } catch (err) {
             console.error("Gagal mengambil data:", err);
-            alert("Gagal mengambil data!");
+            Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Gagal mengambil data,tutor deckk",
+          });
         } finally {
             setLoading(false);
         }
@@ -40,11 +45,28 @@ function EditData() {
         e.preventDefault();
         try {
             await axios.put(`http://localhost:5000/menu/${id}`, formData);
-                alert("Data berhasil diubah Anjay");
+                Swal.fire({
+  title: "Do you want to save the changes?",
+  showDenyButton: true,
+  showCancelButton: true,
+  confirmButtonText: "Save",
+  denyButtonText: `Don't save`
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+    Swal.fire("Saved!", "", "success");
+  } else if (result.isDenied) {
+    Swal.fire("Changes are not saved", "", "info");
+  }
+});
                 navigate("/w")
         } catch (err) {
             console.error("Gagal mengupdate data:", err);
-            alert("Gagal mengupdate data!");
+              Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Gagal update cupu deck deck",
+            });
         }
     };
 

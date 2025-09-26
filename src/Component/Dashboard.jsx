@@ -7,7 +7,7 @@ const Menu = () => {
   return (
     <div className="overflow-x-auto mt-4">
       <table className="min-w-full border border-gray-200 text-sm text-left">
-        <thead className="bg-gray-100">
+        <thead className="bg-gray-400">
           <tr>
             <th className="px-4 py-2 border">Makanan</th>
             <th className="px-4 py-2 border">Minuman</th>
@@ -48,7 +48,7 @@ function Dashboard() {
         </div>
          <div className="bg-white shadow-md rounded-lg p-6 text-center">
           <div className="text-sm text-gray-600 mb-2">Sangat puas</div>
-          <div className="text-2xl font-bold text-yellow-300">90-0</div>
+          <div className="text-2xl font-bold text-yellow-300">90</div>
         </div>
          <div className="bg-white shadow-md rounded-lg p-6 text-center">
           <div className="text-sm text-gray-600 mb-2">Tidak puas</div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function Tambahdata () {
     const [formData, setFormData] = useState({
@@ -23,18 +24,26 @@ function Tambahdata () {
     const response = await axios.post("http://localhost:5000/menu", formData);
 
     console.log('Respon server:', response.data);
-    alert('Pesanan berhasil!');
+    Swal.fire({
+  title: "Yatta, Berhasil",
+  icon: "success",
+  draggable: true
+});
 
     setFormData({
       makanan: "",
       pesanan: "",
       harga: ""
-    });
+    }); 
 
     navigate("/w"); // setelah daftar, arahkan ke login
   } catch (error) {
     console.error("Error saat menambahkan data:", error);
-    alert("Gagal menambahkan data.");
+   Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Something went wrong!",
+});
   } finally {
     setLoading(false);
   }
@@ -98,7 +107,7 @@ function Tambahdata () {
                 Pesan
               </button>
             <Link
-              to="/l"
+              to="/R"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4"
             >
               Kembali

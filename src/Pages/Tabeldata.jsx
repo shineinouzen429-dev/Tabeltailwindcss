@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 
 const Menu = () => {
   const [data, setData] = useState([]);
@@ -29,11 +29,33 @@ const Menu = () => {
 
     try {
       await axios.delete(`http://localhost:5000/menu/${id}`);
-      alert("Data berhasil dihapus");
+     Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+  }
+});
       setData((prev) => prev.filter((item) => item.id !== id));
     } catch (err) {
       console.error("Gagal menghapus data:", err);
-      alert("Gagal menghapus data");
+      Swal.fire({
+  title: 'Error!',
+  text: 'Do you want to continue',
+  icon: 'error',
+  confirmButtonText: 'Cool'
+})
+
     }
   };
 
@@ -96,7 +118,7 @@ function Tabeldata() {
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-semibold">Daftar Menu</h2>
         <button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/Y")}
           className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition"
         >
           Tambah Data
