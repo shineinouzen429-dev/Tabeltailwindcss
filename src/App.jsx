@@ -9,18 +9,20 @@ import Tabeldata from "./Pages/Tabeldata";
 import EditData from "./Pages/Editdata";
 import Sidnav from "./Component/Sidnav";
 import Dashboard from "./Component/Dashboard";
+import Profil from "./Component/Profil";
 
 const App = () => {
   return (
-    <div>
+    <div className="flex">
       <Sidnav/>
-      <div>
+      <div className="flex-1 ml-64 p-6">
 
     <Routes>
       <Route path="/Y" element={<Tambahdata/>}/>
-      <Route path="/R" element={<Dashboard/>}/>
+      <Route path="/" element={<Dashboard/>}/>
       <Route path="/w" element={<Tabeldata/>}/>
       <Route path="/edit/:id" element={<EditData/>}/>
+      <Route path="/Z" element={<Profil/>}/>
     </Routes>
       </div>
     </div>

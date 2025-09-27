@@ -41,34 +41,34 @@ function EditData() {
         setFormData({ ...formData, [e.target.name]: e.target.value})
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await axios.put(`http://localhost:5000/menu/${id}`, formData);
-                Swal.fire({
-  title: "Do you want to save the changes?",
-  showDenyButton: true,
-  showCancelButton: true,
-  confirmButtonText: "Save",
-  denyButtonText: `Don't save`
-}).then((result) => {
-  /* Read more about isConfirmed, isDenied below */
-  if (result.isConfirmed) {
-    Swal.fire("Saved!", "", "success");
-  } else if (result.isDenied) {
-    Swal.fire("Changes are not saved", "", "info");
-  }
-});
-                navigate("/w")
-        } catch (err) {
-            console.error("Gagal mengupdate data:", err);
-              Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Gagal update cupu deck deck",
-            });
-        }
-    };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  Swal.fire({
+    title: "Do you want to save the changes?",
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: "Save",
+    denyButtonText: `Don't save`
+  }).then(async (result) => {   // ✅ bikin async di sini
+    if (result.isConfirmed) {
+      try {
+        await axios.put(`http://localhost:5000/menu/${id}`, formData);
+
+        Swal.fire("Saved!", "", "success");
+        navigate("/w");
+      } catch (err) {
+        console.error("Gagal mengupdate data:", err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Gagal update cupu deck deck",
+        });
+      }
+    }
+  });
+};
+
 
     if (loading) return <p className="text-center mt-10">Loading data</p>
     
@@ -129,4 +129,6 @@ function EditData() {
      </div>   
     )
 }
+
+
 export default EditData

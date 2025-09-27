@@ -23,41 +23,40 @@ const Menu = () => {
     fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
-    const konfirmasi = window.confirm("Yakin ingin menghapus data ini?");
-    if (!konfirmasi) return;
+const handleDelete = async (id) => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+    
+        await axios.delete(`http://localhost:5000/menu/${id}`);
 
-    try {
-      await axios.delete(`http://localhost:5000/menu/${id}`);
-     Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
-}).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
-      icon: "success"
-    });
-  }
-});
-      setData((prev) => prev.filter((item) => item.id !== id));
-    } catch (err) {
-      console.error("Gagal menghapus data:", err);
-      Swal.fire({
-  title: 'Error!',
-  text: 'Do you want to continue',
-  icon: 'error',
-  confirmButtonText: 'Cool'
-})
+        setData((prev) => prev.filter((item) => item.id !== id));
 
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      } catch (err) {
+        console.error("Gagal menghapus data:", err);
+        Swal.fire({
+          title: "Error!",
+          text: "Terjadi kesalahan saat menghapus data.",
+          icon: "error",
+          confirmButtonText: "OK"
+        });
+      }
     }
-  };
+  });
+};
 
   if (loading) return <p className="text-gray-600">Loading...</p>;
 
