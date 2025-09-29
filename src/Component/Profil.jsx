@@ -18,8 +18,8 @@ function Profil() {
         <div>
           <p className="text-2xl font-bold">Ayyas Abdullah</p>
           <p className="text-gray-600">Fullstack Developer</p>
-          <p className="text-gray-600">📧 ayyas@example.com</p>
-          <p className="text-gray-600">📍 Jakarta, Indonesia</p>
+          <p className="text-gray-600">ayyas@example.com</p>
+          <p className="text-gray-600">Jakarta, Indonesia</p>
         </div>
       </div>
 
@@ -27,9 +27,9 @@ function Profil() {
       <div className="mt-6 bg-gray-100 p-6 rounded-lg">
         <h3 className="text-xl font-semibold mb-3">Tentang Saya</h3>
         <p className="text-gray-700 leading-relaxed">
-          Halo 👋, saya Ayyas Abdullah. Seorang dokter yang suka
-          bedah orang sembarangan, terutama usus, lambung, dan ginjal.
-          Senang membangun organ tubuh yang absurd dan keren.
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, autem cumque?
+         Vero voluptatem vel neque sed tempore repellendus error minus. Libero, earum 
+         tenetur? Nihil autem omnis ea alias dolorum recusandae.
         </p>
       </div>
     </div>

@@ -10,6 +10,8 @@ import EditData from "./Pages/Editdata";
 import Sidnav from "./Component/Sidnav";
 import Dashboard from "./Component/Dashboard";
 import Profil from "./Component/Profil";
+import User from "./Pages/User";
+import Tambahuser from "./Pages/Tambahuser";
 
 const App = () => {
   return (
@@ -19,10 +21,13 @@ const App = () => {
 
     <Routes>
       <Route path="/Y" element={<Tambahdata/>}/>
+      <Route path="/a" element={<Tambahuser/>}/>
       <Route path="/" element={<Dashboard/>}/>
       <Route path="/w" element={<Tabeldata/>}/>
       <Route path="/edit/:id" element={<EditData/>}/>
       <Route path="/Z" element={<Profil/>}/>
+      <Route path="/d" element={<User/>}/>
+ 
     </Routes>
       </div>
     </div>

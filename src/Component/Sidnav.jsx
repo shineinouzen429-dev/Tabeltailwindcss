@@ -14,6 +14,7 @@ function Sidnav () {
                     <a href="/" className="block py-3 px-3 rounded hover:bg-blue-600 text-2xl">Dashboard</a>
                     <a href="/w" className="block py-3 px-3 rounded hover:bg-blue-600 text-2xl">Tabel Data</a>
                     <a href="Z" className="block py-2 px-3 rounded hover:bg-blue-600 text-2xl">Profil</a>
+                    <a href="d" className="block py-2 px-3 rounded hover:bg-blue-600 text-2xl">Tabel</a>
                 </nav>
 
                 <div className=""></div>

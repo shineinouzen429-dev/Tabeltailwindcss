@@ -19,6 +19,32 @@
       "makanan": "rtt",
       "pesanan": "Two 3",
       "harga": "Rp.100 "
+    },
+    {
+      "id": "16da",
+      "makanan": "Nasgor gorerng",
+      "pesanan": "Two 3",
+      "harga": "segfgh"
+    }
+  ],
+  "siswa": [
+    {
+      "id": "825a",
+      "nama": "moreno",
+      "email": "Ngebruk@gmail.com",
+      "jurusan": "TB busana"
+    },
+    {
+      "id": "e0af",
+      "nama": "Darenn",
+      "email": "AniAni@gmail.com",
+      "jurusan": "Akutansi"
+    },
+    {
+      "id": "7b43",
+      "nama": "moreno",
+      "email": "jaUGUGksak@gmail.com",
+      "jurusan": "IHIH"
     }
   ]
 }
