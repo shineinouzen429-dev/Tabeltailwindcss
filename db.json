@@ -29,22 +29,24 @@
   ],
   "siswa": [
     {
-      "id": "825a",
+      "id": "69d6",
+      "nama": "Dafa",
+      "email": "dafagacor2025@gmail.com",
+      "jurusan": "Tkj",
+      "status": "diterima"
+    },
+    {
+      "id": "dd7a",
       "nama": "moreno",
       "email": "Ngebruk@gmail.com",
-      "jurusan": "TB busana"
+      "jurusan": "Tata busana",
+      "status": "tidak"
     },
     {
-      "id": "e0af",
-      "nama": "Darenn",
+      "id": "689d",
+      "nama": "Andre",
       "email": "AniAni@gmail.com",
-      "jurusan": "Akutansi"
-    },
-    {
-      "id": "7b43",
-      "nama": "moreno",
-      "email": "jaUGUGksak@gmail.com",
-      "jurusan": "IHIH"
+      "jurusan": "Tsm"
     }
   ]
 }

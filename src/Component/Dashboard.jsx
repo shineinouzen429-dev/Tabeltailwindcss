@@ -5,25 +5,63 @@ import Swal from "sweetalert2";
 
 function Dashboard() {
   const [siswa, setSiswa] = useState ([]);
-  const [loading, setLoading] = useState ([true]);
-    const navigate = useNavigate();
+  const [loading, setLoading] = useState (true);
+  const navigate = useNavigate();
+  const [diterima, setDiterima] = useState(0);
+  const [tidakditerima, setTidakditerima] = useState(0);
+  const updateCounts = (data) => {
+  const diterimaCount = data.filter(s => s.status === "diterima").length;
+  const tidakCount = data.filter(s => s.status === "tidak").length;
+  setDiterima(diterimaCount);
+  setTidakditerima(tidakCount);
+};
 
-    useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/siswa");
-        setSiswa(response.data);
-      } catch (error) {
-        console.error("Gagal ambil data siswa:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    fetchData();
-  }, []);
 
-  const handleDelete = async (id) => {
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/siswa");
+      setSiswa(response.data);
+      updateCounts(response.data);
+    } catch (error) {
+      console.error("Gagal ambil data siswa:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, []);
+
+
+  const handleStatus = (id, status) => {
+  if (status === "diterima") {
+    setDiterima((prev) => prev + 1);
+  } else {
+    setTidakditerima((prev) => prev + 1);
+  }
+
+  const selected = siswa.find((s) => s.id === id);
+
+  axios
+    .put(`http://localhost:5000/siswa/${id}`, {
+      ...selected,
+      status,
+    })
+    .then(() => {
+      setSiswa((prev) =>
+        prev.map((s) =>
+          s.id === id ? { ...s, status } : s
+        )
+      );
+      Swal.fire("Data berhasil diupdate!", `Siswa ${status}`, "success");
+    })
+    .catch((err) => console.error("Gagal update status:", err));
+};
+
+const handleDelete = async (id) => {
   Swal.fire({
     title: "Are you sure?",
     text: "You won't be able to revert this!",
@@ -35,14 +73,14 @@ function Dashboard() {
   }).then(async (result) => {
     if (result.isConfirmed) {
       try {
-    
         await axios.delete(`http://localhost:5000/siswa/${id}`);
 
-        setSiswa((prev) => prev.filter((item) => item.id !== id));
-
+        const newData = siswa.filter((item) => item.id !== id);
+        setSiswa(newData);
+        updateCounts(newData); 
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Data siswa berhasil dihapus.",
           icon: "success"
         });
       } catch (err) {
@@ -57,6 +95,7 @@ function Dashboard() {
     }
   });
 };
+
 
   if (loading) {
     return <p className="text-center mt-10">Loading...</p>;
@@ -77,12 +116,12 @@ function Dashboard() {
           </p>
         </div>
         <div className="p-4 shadow rounded text-center">
-          <h2>Sangat Puas</h2>
-          <p className="text-blue-600 text-2xl font-bold">90</p>
+          <h2>Diterima</h2>
+          <p className="text-blue-600 text-2xl font-bold">{diterima}</p>
         </div>
         <div className="p-4 shadow rounded text-center">
-          <h2>Tidak Puas</h2>
-          <p className="text-red-600 text-2xl font-bold">4</p>
+          <h2>Tidak diterima</h2>
+          <p className="text-red-600 text-2xl font-bold">{tidakditerima}</p>
         </div>
       </div>
 
@@ -98,28 +137,60 @@ function Dashboard() {
       <table className="table-auto w-full border border-collapse">
         <thead>
           <tr>
-            <th className="border px-4 py-2">No</th>
-            <th className="border px-4 py-2">Nama</th>
+            <th className="border W-12 text-center">No</th>
+            <th className="border px- py-2">Nama</th>
             <th className="border px-4 py-2">Email</th>
             <th className="border px-4 py-2">Jurusan</th>
-            <th className="border px-4 py-2">Aksi</th>
+            <th className="border px-4 py-2">Enter text</th>
           </tr>
         </thead>
         <tbody>
           {siswa.map((item, index) => (
             <tr key={item.id}>
-              <td className="border px-4 py-2">{index + 1}</td>
+              <td className="border W-12 text-center">{index + 1}</td>
               <td className="border px-4 py-2">{item.nama}</td>
               <td className="border px-4 py-2">{item.email}</td>
               <td className="border px-4 py-2">{item.jurusan}</td>
-               <td className="px-4 py-2 border space-x-2">
-                  <button
-                    onClick={() => handleDelete(item.id)}
-                    className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
-                  >
-                    Hapus
-                  </button>
-                </td>
+              <td className="border px-4 py-2 text-center space-x-2">
+            {item.status === "diterima" ? (
+                <button
+                  className="bg-blue-400 text-white px-3 py-1 rounded cursor-not-allowed"
+                  disabled
+                >
+                Diterima
+                </button>
+                ) : item.status === "tidak" ? (
+                <>
+                <button
+                  className="bg-red-400 text-white px-3 py-1 rounded cursor-not-allowed"
+                  disabled
+               >
+                Tidak Diterima
+               </button>
+             <button
+               onClick={() => handleDelete(item.id)}
+               className="bg-gray-500 hover:bg-gray-700 text-white px-3 py-1 rounded ml-2"
+             >
+                Hapus
+              </button>
+                  </>
+               ) : (
+             <>
+              <button
+               onClick={() => handleStatus(item.id, "diterima")}
+               className="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded"
+             >
+              Diterima
+              </button>
+            <button
+             onClick={() => handleStatus(item.id, "tidak")}
+             className="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded"
+          >
+              Tidak Diterima
+            </button>
+         </>
+             )}
+              </td>
             </tr>
           ))}
         </tbody>

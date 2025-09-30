@@ -48,9 +48,7 @@ function Tambahdata () {
     setLoading(false);
   }
 };
-if (loading) {
-    return <p className="text-center mt-10">Loading...</p>;
-  }
+
 
   
   return (
